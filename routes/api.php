@@ -1,12 +1,13 @@
 <?php
 
 use App\Http\Controllers\Api\JadwalDokterController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
-// Route::get('/user', function (Request $request) {
-//     return $request->user();
-// })->middleware('auth:sanctum');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
 
-Route::get('/jadwal-dokter', [JadwalDokterController::class, 'index']);
-Route::post('/jadwal-dokter', [JadwalDokterController::class, 'store']);
+// sanctum middleware
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/jadwal-dokter', [JadwalDokterController::class, 'index']);
+    Route::post('/jadwal-dokter', [JadwalDokterController::class, 'store']);
+});
