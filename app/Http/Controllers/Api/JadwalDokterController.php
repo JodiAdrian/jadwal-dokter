@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreJadwalDokterRequest;
 use App\Models\JadwalDokter;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
@@ -51,18 +52,8 @@ class JadwalDokterController extends Controller
 
 
     // Simpan jadwal dokter baru
-    public function store(Request $request)
+    public function store(StoreJadwalDokterRequest $request)
     {
-        $request->validate([
-            'dokter_id' => 'required|exists:dokter,id',
-            'day' => 'required|string',
-            'time_start' => 'required|string',
-            'time_finish' => 'required|string',
-            'quota' => 'required|integer',
-            'status' => 'required|boolean',
-            'start_date' => 'required|date',
-            'end_date' => 'required|date',
-        ]);
 
         $jadwal = JadwalDokter::create($request->all());
 
