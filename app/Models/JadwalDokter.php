@@ -15,12 +15,11 @@ class JadwalDokter extends Model
         'time_finish',
         'quota',
         'status',
-        'start_date',
-        'end_date',
+        'date',
     ];
 
     public function dokter()
     {
         return $this->belongsTo(Dokter::class, 'dokter_id');
-    }   
+    }
 }

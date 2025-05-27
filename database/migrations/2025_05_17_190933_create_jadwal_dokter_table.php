@@ -19,8 +19,7 @@ return new class extends Migration
             $table->string('time_finish');
             $table->integer('quota');
             $table->boolean('status');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->date('date');
             $table->timestamps();
         });
     }
